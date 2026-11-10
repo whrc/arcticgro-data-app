@@ -1,0 +1,12 @@
+# R / RStudio / Positron
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+# deployment settings (Posit Publisher, rsconnect)
+.posit/
+rsconnect/
+# local caches
+cache/
+# macOS
+.DS_Store

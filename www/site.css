@@ -1,0 +1,126 @@
+/* site.css - makes the explorer match arcticgreatrivers.org
+   (navy header, Montserrat headings, Inter body text, ArcticGRO blue). */
+
+body { color: #10202e; }
+
+h1, h2, h3, h4, h5, .card-header, .navbar-brand, .accordion-button {
+  font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- header bar ---- */
+.navbar, .navbar.navbar-default, .navbar.navbar-inverse {
+  --bslib-navbar-default-bg: #0f3557;
+  --bslib-navbar-inverse-bg: #0f3557;
+  background-color: #0f3557 !important;
+  border-bottom: 3px solid #41a6d9;
+}
+.navbar .navbar-brand {
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.navbar .nav-link {
+  color: #dce9f3 !important;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+}
+.navbar .nav-link:hover { color: #ffffff !important; }
+.navbar .nav-link.active {
+  color: #ffffff !important;
+  border-bottom-color: #41a6d9;
+}
+.navbar .navbar-toggler { border-color: rgba(255, 255, 255, 0.5); }
+.navbar .navbar-toggler-icon { filter: invert(1); }
+
+/* ---- sidebar ---- */
+.bslib-sidebar-layout > .sidebar {
+  background-color: #f3f7fa;
+  border-right: 1px solid #e3e8ed;
+}
+.sidebar .control-label, .sidebar label { font-weight: 600; }
+
+/* ---- cards ---- */
+.card {
+  border: 1px solid #e3e8ed;
+  border-radius: 12px;
+  box-shadow: none;
+}
+.card-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e3e8ed;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #10202e;
+}
+.card-footer {
+  background: #ffffff;
+  color: #3d4a57;
+  font-size: 0.9rem;
+}
+
+/* ---- buttons and links ---- */
+.btn-primary, .btn-default.shiny-download-link {
+  background-color: #1e6aa8;
+  border-color: #1e6aa8;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #175789;
+  border-color: #175789;
+}
+a { color: #1e6aa8; }
+
+/* ---- loading message shown until the first plot draws ---- */
+.app-loading {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600; color: #0f3557; font-size: 1.05rem;
+  transition: opacity 0.3s;
+}
+.app-loading.done { opacity: 0; pointer-events: none; }
+
+/* ---- when shown inside the website (iframe) ----
+   The page grows to its full height instead of scrolling inside the frame;
+   the website resizes the frame to fit (see README). */
+html.in-frame, html.in-frame body { height: auto !important; min-height: 0 !important; overflow: visible !important; }
+html.in-frame .bslib-page-fill,
+html.in-frame .bslib-sidebar-layout,
+html.in-frame .bslib-sidebar-layout > .main,
+html.in-frame .bslib-sidebar-layout > .sidebar,
+html.in-frame .tab-content,
+html.in-frame .html-fill-container {
+  height: auto !important; min-height: 0 !important; overflow: visible !important;
+}
+html.in-frame .bslib-sidebar-layout { align-items: stretch; }
+/* full-screen cards don't work well inside a frame */
+html.in-frame .bslib-full-screen-enter { display: none !important; }
+html.in-frame .app-loading { position: absolute; bottom: auto; height: 600px; }
+
+/* embed mode (?embed=1): hide the app title, the website already has one */
+html.embedded .navbar-brand { display: none !important; }
+
+/* links in the header bar (e.g. "Dataset on Zenodo") */
+.navbar .nav-item > a:not(.nav-link), .navbar .navbar-nav a[target="_blank"] { color: #9fd0ee !important; }
+.navbar a[target="_blank"]:hover { color: #ffffff !important; }
+
+/* data tables grow with their rows instead of spilling out of the card */
+.datatables.html-widget { height: auto !important; flex: 0 0 auto !important; min-height: 0; }
+
+/* long links (DOIs) wrap inside the sidebar */
+.sidebar a { overflow-wrap: anywhere; }
+
+/* inputs placed in card headers sit on one line with the title */
+.card-header .form-group, .card-header .shiny-input-container { margin-bottom: 0; }
+.card-header .checkbox { margin: 0; }
+.card-header .selectize-control { margin-bottom: 0; }
+
+/* About page: one block per dataset */
+.about-section { border-top: 1px solid #e3e8ed; padding-top: 1.25rem; margin-top: 1.5rem; max-width: 920px; }
+.about-section h3 { font-size: 1.35rem; font-weight: 700; color: #0f3557; margin-bottom: 0.75rem; }
+.about-section h5 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.35rem; }
+.about-table { max-width: 920px; font-size: 0.92rem; margin: 0.5rem 0 1rem; }
+.about-table th { font-weight: 600; color: #3d4a57; }
